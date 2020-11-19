@@ -1,3 +1,29 @@
 .pokemonCard {
-  background-color: coral;
+  background-color: lightyellow;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemonCardId {
+  align-self: flex-start;
+  margin: 3px;
+}
+
+.pokemonCardName {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.pokemonTypeWrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.pokemonTypeElement {
+  margin: 0 10px;
 }

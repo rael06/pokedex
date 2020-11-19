@@ -23,9 +23,11 @@ const typeColors = {
   dragon: 'turquoise',
 }
 export default function PokemonType({ type }) {
-  const color = contrastor(typeColors[type])
   return (
-    <div className={`pokemonType`} style={{ backgroundColor: typeColors[type] }}>
+    <div
+      className={`pokemonType`}
+      style={{ backgroundColor: typeColors[type], color: contrastor(typeColors[type]) }}
+    >
       {type}
     </div>
   )

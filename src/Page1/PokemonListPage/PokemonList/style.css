@@ -1,0 +1,10 @@
+.pokemonList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.pokemonCardWrapper {
+  margin: 10px;
+  flex: 1 1 20%;
+}

@@ -3,6 +3,7 @@ import styles from './style.module.css'
 import { darker } from 'common/utils/color'
 
 // const regex = /(?:"types": \["([a-z]+)"(?:, "([a-z]+)")*\],)/
+
 const typeColors = {
   poison: '#A33EA1',
   grass: '#7AC74C',

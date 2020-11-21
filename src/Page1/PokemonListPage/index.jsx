@@ -1,10 +1,10 @@
 import React from 'react'
-import './style.css'
+import styles from './style.module.css'
 import PokemonList from 'Page1/PokemonListPage/PokemonList'
 
 export default function PokemonListPage() {
   return (
-    <div className="PokemonListPage">
+    <div className={styles.pokemonListPage}>
       <PokemonList />
     </div>
   )

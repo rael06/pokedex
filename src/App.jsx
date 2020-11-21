@@ -1,16 +1,16 @@
 import React from 'react'
-import './style.css'
+import styles from './style.module.css'
 import PokemonListPage from 'Page1/PokemonListPage'
 import Header from 'common/components/Header'
 
 export default function App() {
   return (
-    <div className="App">
-      <div className="wrapper">
+    <div className={styles.app}>
+      <div className={styles.wrapper}>
         <Header />
       </div>
 
-      <div className="wrapper">
+      <div className={styles.wrapper}>
         <PokemonListPage />
       </div>
     </div>

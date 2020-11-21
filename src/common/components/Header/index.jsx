@@ -1,11 +1,11 @@
 import React from 'react'
-import './style.css'
+import styles from './style.module.css'
 import logo from './logo.svg'
 
 export default function Header() {
   return (
-    <div className="header">
-      <img className="logo" alt="logo" src={logo} />
+    <div className={styles.header}>
+      <img className={styles.logo} alt="logo" src={logo} />
       <p>language selection</p>
     </div>
   )

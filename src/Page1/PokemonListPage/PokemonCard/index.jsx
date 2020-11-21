@@ -1,17 +1,17 @@
 import PokemonType from 'common/components/PokemonType'
 import React from 'react'
 import padder from 'common/helpers/padder'
-import './style.css'
+import styles from './style.module.css'
 
 export default function PokemonCard({ id, name, image, types }) {
   return (
-    <div className="pokemonCard">
-      <p className="pokemonCardId">No.{padder('0', 3, id)}</p>
-      <p className="pokemonCardName">{name}</p>
+    <div className={styles.pokemonCard}>
+      <p className={styles.pokemonCardId}>No.{padder('0', 3, id)}</p>
+      <p className={styles.pokemonCardName}>{name}</p>
       <img alt="pic" src={image} style={{ width: '120px' }} />
-      <div className="pokemonTypeWrapper">
+      <div className={styles.pokemonTypeWrapper}>
         {types.map((type) => (
-          <div key={id + name + type} className="pokemonTypeElement">
+          <div key={id + name + type} className={styles.pokemonTypeElement}>
             <PokemonType type={type} />
           </div>
         ))}

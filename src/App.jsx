@@ -5,12 +5,12 @@ import Header from 'common/components/Header'
 
 export default function App() {
   return (
-    <div className={styles.app}>
-      <div className={styles.wrapper}>
+    <div className={styles.wrapper}>
+      <div className={styles.subWrapper}>
         <Header />
       </div>
 
-      <div className={styles.wrapper}>
+      <div className={styles.subWrapper}>
         <PokemonListPage />
       </div>
     </div>

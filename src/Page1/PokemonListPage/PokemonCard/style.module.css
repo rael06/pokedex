@@ -1,4 +1,4 @@
-.pokemonCard {
+.wrapper {
   background-color: white;
   padding-top: 5px;
   padding-bottom: 20px;
@@ -8,22 +8,26 @@
   align-items: center;
 }
 
-.pokemonCardId {
+.id {
   align-self: flex-start;
   margin: 3px;
 }
 
-.pokemonCardName {
+.name {
   font-size: 35px;
   margin: 0;
 }
 
-.pokemonTypeWrapper {
+.image {
+  width: 120px;
+}
+
+.types {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
 }
 
-.pokemonTypeElement {
+.type {
   margin: 0 10px;
 }

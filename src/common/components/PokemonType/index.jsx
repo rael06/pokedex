@@ -27,10 +27,7 @@ const typeColors = {
 export default function PokemonType({ type }) {
   const color = typeColors[type]
   return (
-    <div
-      className={styles.pokemonType}
-      style={{ backgroundColor: color, borderColor: darker(color) }}
-    >
+    <div className={styles.wrapper} style={{ backgroundColor: color, borderColor: darker(color) }}>
       {type}
     </div>
   )

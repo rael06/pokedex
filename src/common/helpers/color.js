@@ -6,7 +6,7 @@ export function contrastor(background) {
   return greyscale < 150 ? 'white' : 'black'
 }
 
-export function darker(color) {
+export default function darker(color) {
   const darkFactor = 0.5
   const { r, g, b } = parse(color)
   return `rgb(${r * darkFactor}, ${g * darkFactor}, ${b * darkFactor})`

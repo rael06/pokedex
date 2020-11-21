@@ -1,4 +1,7 @@
 {
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
   "name": "pokedex",
   "version": "0.1.0",
   "private": true,

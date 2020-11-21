@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './style.module.css'
-import { darker } from 'common/helpers/color'
+import { darker } from 'common/utils/color'
 
 // const regex = /(?:"types": \["([a-z]+)"(?:, "([a-z]+)")*\],)/
 const typeColors = {

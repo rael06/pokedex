@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <div className={styles.header}>
       <img className={styles.logo} alt="logo" src={logo} />
-      <p>language selection</p>
+      <p> style={{ color: 'orange' }}>language selection</p>
     </div>
   )
 }

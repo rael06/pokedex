@@ -7,4 +7,5 @@
 .cardWrapper {
   margin: 15px 5px;
   width: 433px;
+  cursor: pointer;
 }

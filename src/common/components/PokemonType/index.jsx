@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css'
-import contrastor from 'common/helpers/contrastor'
+import { darker } from 'common/helpers/color'
 
 // const regex = /(?:"types": \["([a-z]+)"(?:, "([a-z]+)")*\],)/
 const typeColors = {
@@ -24,11 +24,9 @@ const typeColors = {
 }
 
 export default function PokemonType({ type }) {
+  const color = typeColors[type]
   return (
-    <div
-      className={`pokemonType`}
-      style={{ backgroundColor: typeColors[type], color: contrastor(typeColors[type]) }}
-    >
+    <div className={`pokemonType`} style={{ backgroundColor: color, borderColor: darker(color) }}>
       {type}
     </div>
   )

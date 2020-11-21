@@ -8,7 +8,7 @@ export default function PokemonCard({ id, name, image, types }) {
     <div className="pokemonCard">
       <p className="pokemonCardId">No.{padder('0', 3, id)}</p>
       <p className="pokemonCardName">{name}</p>
-      <img alt="pic" src={image} style={{ width: '150px' }} />
+      <img alt="pic" src={image} style={{ width: '120px' }} />
       <div className="pokemonTypeWrapper">
         {types.map((type) => (
           <div key={id + name + type} className="pokemonTypeElement">

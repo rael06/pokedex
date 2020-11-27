@@ -6,8 +6,12 @@ import LocaleContext from '../../../common/contexts/LocaleContext'
 
 export default function PokemonList({ searched }) {
   const { locale } = React.useContext(LocaleContext)
+
+  const getLocaleName = (pokemon) =>
+    pokemon.names[locale] ? pokemon.names[locale] : pokemon.names.en
+
   const list = pokemonList.filter((pokemon) =>
-    pokemon.names[locale].toLowerCase().includes(searched.toLowerCase())
+    getLocaleName(pokemon).toLowerCase().includes(searched.toLowerCase())
   )
 
   return (
@@ -17,7 +21,7 @@ export default function PokemonList({ searched }) {
           <div key={pokemon.id} className={styles.cardWrapper}>
             <PokemonCard
               id={pokemon.id}
-              name={pokemon.names[locale]}
+              name={getLocaleName(pokemon)}
               image={pokemon.image}
               types={pokemon.types}
             />

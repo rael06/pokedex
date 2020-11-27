@@ -2,8 +2,10 @@ import React from 'react'
 import styles from './style.module.css'
 import PokemonCard from 'Page1/PokemonListPage/PokemonCard'
 import pokemonList from './pokemons.json'
+import LocaleContext from '../../../common/contexts/LocaleContext'
 
 export default function PokemonList({ searched }) {
+  const { locale } = React.useContext(LocaleContext)
   const list = pokemonList.filter((pokemon) =>
     pokemon.names.fr.toLowerCase().includes(searched.toLowerCase())
   )
@@ -15,7 +17,7 @@ export default function PokemonList({ searched }) {
           <div key={pokemon.id} className={styles.cardWrapper}>
             <PokemonCard
               id={pokemon.id}
-              name={pokemon.names.fr}
+              name={pokemon.names[locale]}
               image={pokemon.image}
               types={pokemon.types}
             />

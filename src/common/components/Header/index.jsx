@@ -1,12 +1,13 @@
 import React from 'react'
 import styles from './style.module.css'
 import logo from './logo.svg'
+import LanguageSelection from 'common/components/Header/LanguageSelection'
 
-export default function Header() {
+export default function Header({ changeLocale }) {
   return (
     <div className={styles.header}>
       <img className={styles.logo} alt="logo" src={logo} />
-      <p style={{ color: 'orange' }}>language selection</p>
+      <LanguageSelection handleSelect={changeLocale} />
     </div>
   )
 }

@@ -8,6 +8,7 @@ export default function PokemonListPage() {
   const [searched, setSearched] = useLocalStorage('searchedPokemon', '')
 
   const handleChange = (event) => setSearched(event.target.value)
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.searchBar}>

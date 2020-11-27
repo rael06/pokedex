@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './style.module.css'
 import { darker } from 'common/utils/color'
 import localeTypes from './types.json'
-import LocaleContext from '../../contexts/LocaleContext'
+import LocaleContext from 'common/contexts/LocaleContext'
 
 // const regex = /(?:"types": \["([a-z]+)"(?:, "([a-z]+)")*\],)/
 

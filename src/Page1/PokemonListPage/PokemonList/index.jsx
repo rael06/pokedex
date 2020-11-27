@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './style.module.css'
 import PokemonCard from 'Page1/PokemonListPage/PokemonCard'
 import pokemonList from './pokemons.json'
-import LocaleContext from '../../../common/contexts/LocaleContext'
+import LocaleContext from 'common/contexts/LocaleContext'
 
 export default function PokemonList({ searched }) {
   const { locale } = React.useContext(LocaleContext)

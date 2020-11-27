@@ -29,10 +29,12 @@ const typeColors = {
 export default function PokemonType({ type }) {
   const { locale } = React.useContext(LocaleContext)
   const color = typeColors[type]
+  const localeType = () =>
+    localeTypes[type][locale] ? localeTypes[type][locale] : localeTypes[type].en
 
   return (
     <div className={styles.wrapper} style={{ backgroundColor: color, borderColor: darker(color) }}>
-      {localeTypes[type][locale]}
+      {localeType()}
     </div>
   )
 }

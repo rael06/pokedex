@@ -7,7 +7,7 @@ import LocaleContext from '../../../common/contexts/LocaleContext'
 export default function PokemonList({ searched }) {
   const { locale } = React.useContext(LocaleContext)
   const list = pokemonList.filter((pokemon) =>
-    pokemon.names.fr.toLowerCase().includes(searched.toLowerCase())
+    pokemon.names[locale].toLowerCase().includes(searched.toLowerCase())
   )
 
   return (

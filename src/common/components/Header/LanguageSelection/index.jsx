@@ -20,7 +20,7 @@ export default function LanguageSelection() {
         <option value="es">es</option>
         <option value="de">de</option>
         <option value="fr">fr</option>
-        <option value="zh">zh</option>
+        <option value="zh-Hant">zh-Hant</option>
         <option value="ko">ko</option>
         <option value="roomaji">roomaji</option>
         <option value="ja-Hrkt">ja-Hrkt</option>

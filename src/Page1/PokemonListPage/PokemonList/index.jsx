@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from './style.module.css'
 import PokemonCard from 'Page1/PokemonListPage/PokemonCard'
-import pokemonList from './pokemons.json'
-import LocaleContext from 'common/contexts/LocaleContext'
+import pokemonList from 'common/models/pokemons.json'
+import useLocale from 'common/hooks/useLocale'
+import PureLink from 'common/components/PureLink'
 
 export default function PokemonList({ searched }) {
-  const { locale } = React.useContext(LocaleContext)
+  const locale = useLocale()
 
   const getLocaleName = (pokemon) =>
     pokemon.names[locale] ? pokemon.names[locale] : pokemon.names.en
@@ -19,12 +20,14 @@ export default function PokemonList({ searched }) {
       {list.length > 0 ? (
         list.map((pokemon) => (
           <div key={pokemon.id} className={styles.cardWrapper}>
-            <PokemonCard
-              id={pokemon.id}
-              name={getLocaleName(pokemon)}
-              image={pokemon.image}
-              types={pokemon.types}
-            />
+            <PureLink to={`/pokemon/${pokemon.id}`}>
+              <PokemonCard
+                id={pokemon.id}
+                name={getLocaleName(pokemon)}
+                image={pokemon.image}
+                types={pokemon.types}
+              />
+            </PureLink>
           </div>
         ))
       ) : (

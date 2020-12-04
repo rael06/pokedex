@@ -11,22 +11,17 @@ export default function PokemonCard({ id, name, image, types }) {
   // React.useEffect(() => setImageSource(image), [image])
 
   return (
-    <PureLink
-      to={`/pokemon/${id}`}
-      children={
-        <div className={styles.wrapper}>
-          <p className={styles.id}>No.{padder('0', 3, id)}</p>
-          <p className={styles.name}>{name}</p>
-          <img className={styles.image} alt="pic" src={image} />
-          <div className={styles.types}>
-            {types.map((type) => (
-              <div key={id + name + type} className={styles.type}>
-                <PokemonType type={type} />
-              </div>
-            ))}
+    <div className={styles.wrapper}>
+      <p className={styles.id}>No.{padder('0', 3, id)}</p>
+      <p className={styles.name}>{name}</p>
+      <img className={styles.image} alt="pic" src={image} />
+      <div className={styles.types}>
+        {types.map((type) => (
+          <div key={id + name + type} className={styles.type}>
+            <PokemonType type={type} />
           </div>
-        </div>
-      }
-    ></PureLink>
+        ))}
+      </div>
+    </div>
   )
 }

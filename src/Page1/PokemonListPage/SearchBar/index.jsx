@@ -1,3 +1,5 @@
+import useLocale from 'common/hooks/useLocale'
+import { getLocaleName, translations } from 'common/utils/locale'
 import React from 'react'
 import styles from './style.module.css'
 
@@ -8,7 +10,7 @@ export default function SearchBar({ handleChange, value }) {
         className={styles.input}
         onChange={handleChange}
         value={value}
-        placeholder="Entrez un nom de pokemon"
+        placeholder={getLocaleName(translations['pokemonSearchBarPlaceholder'], useLocale())}
       />
     </>
   )

@@ -2,7 +2,8 @@ import React from 'react'
 import styles from './style.module.css'
 import { darker } from 'common/utils/color'
 import localeTypes from './types.json'
-import LocaleContext from 'common/contexts/LocaleContext'
+import { getLocaleName } from '../../utils/locale'
+import { useLocale } from '../../hooks/useLocale'
 
 // const regex = /(?:"types": \["([a-z]+)"(?:, "([a-z]+)")*\],)/
 
@@ -27,14 +28,11 @@ const typeColors = {
 }
 
 export default function PokemonType({ type }) {
-  const { locale } = React.useContext(LocaleContext)
   const color = typeColors[type]
-  const localeType = () =>
-    localeTypes[type][locale] ? localeTypes[type][locale] : localeTypes[type].en
 
   return (
     <div className={styles.wrapper} style={{ backgroundColor: color, borderColor: darker(color) }}>
-      {localeType()}
+      {getLocaleName(localeTypes[type], useLocale())}
     </div>
   )
 }

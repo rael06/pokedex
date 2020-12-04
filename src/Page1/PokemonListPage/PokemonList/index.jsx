@@ -4,15 +4,13 @@ import PokemonCard from 'Page1/PokemonListPage/PokemonCard'
 import pokemonList from 'common/models/pokemons.json'
 import useLocale from 'common/hooks/useLocale'
 import PureLink from 'common/components/PureLink'
+import { getLocaleName } from 'common/utils/locale'
 
 export default function PokemonList({ searched }) {
   const locale = useLocale()
 
-  const getLocaleName = (pokemon) =>
-    pokemon.names[locale] ? pokemon.names[locale] : pokemon.names.en
-
   const list = pokemonList.filter((pokemon) =>
-    getLocaleName(pokemon).toLowerCase().includes(searched.toLowerCase())
+    getLocaleName(pokemon.names, locale).toLowerCase().includes(searched.toLowerCase())
   )
 
   return (
@@ -21,12 +19,7 @@ export default function PokemonList({ searched }) {
         list.map((pokemon) => (
           <div key={pokemon.id} className={styles.cardWrapper}>
             <PureLink to={`/pokemon/${pokemon.id}`}>
-              <PokemonCard
-                id={pokemon.id}
-                name={getLocaleName(pokemon)}
-                image={pokemon.image}
-                types={pokemon.types}
-              />
+              <PokemonCard pokemon={pokemon} />
             </PureLink>
           </div>
         ))

@@ -5,19 +5,19 @@ import styles from './style.module.css'
 import { getLocaleName } from '../../../common/utils/locale'
 import { useLocale } from '../../../common/hooks/useLocale'
 
-const PokemonCard = ({ pokemon }) => (
-  <div className={styles.wrapper}>
-    <p className={styles.id}>No.{padder('0', 3, pokemon.id)}</p>
-    <p className={styles.name}>{getLocaleName(pokemon.names, useLocale())}</p>
-    <img className={styles.image} alt="pic" src={pokemon.image} />
-    <div className={styles.types}>
-      {pokemon.types.map((type) => (
-        <div key={type} className={styles.type}>
-          <PokemonType type={type} />
-        </div>
-      ))}
+export default function PokemonCard({ pokemon }) {
+  return (
+    <div className={styles.wrapper}>
+      <p className={styles.id}>No.{padder('0', 3, pokemon.id)}</p>
+      <p className={styles.name}>{getLocaleName(pokemon.names, useLocale())}</p>
+      <img className={styles.image} alt="pic" src={pokemon.image} />
+      <div className={styles.types}>
+        {pokemon.types.map((type) => (
+          <div key={type} className={styles.type}>
+            <PokemonType type={type} />
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-)
-
-export default PokemonCard
+  )
+}

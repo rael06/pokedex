@@ -18,7 +18,7 @@ export default function PokemonList({ searched }) {
       {list.length > 0 ? (
         list.map((pokemon) => (
           <div key={pokemon.id} className={styles.cardWrapper}>
-            <PureLink to={`/pokemon/${pokemon.id}`}>
+            <PureLink to={`/pokemons/${pokemon.id}`}>
               <PokemonCard pokemon={pokemon} />
             </PureLink>
           </div>

@@ -16,7 +16,7 @@ const PokemonDetails = () => {
   return (
     <div className={styles.wrapper}>
       <PokemonCard pokemon={pokemon} />
-      <PureLink to="/">
+      <PureLink to="/pokemons">
         <button>{getLocaleName(translations['goBack'], locale)}</button>
       </PureLink>
     </div>

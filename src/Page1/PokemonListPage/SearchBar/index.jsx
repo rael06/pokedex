@@ -1,16 +1,20 @@
 import useLocale from 'common/hooks/useLocale'
 import { getLocaleName, translations } from 'common/utils/locale'
 import React from 'react'
-import styles from './style.module.css'
+import { TextField } from '@material-ui/core'
+import useStyles from './style.js'
 
 export default function SearchBar({ handleChange, value }) {
+  const locale = useLocale()
+  const classes = useStyles()
+
   return (
     <>
-      <input
-        className={styles.input}
+      <TextField
         onChange={handleChange}
         value={value}
-        placeholder={getLocaleName(translations['pokemonSearchBarPlaceholder'], useLocale())}
+        placeholder={getLocaleName(translations['pokemonSearchBarPlaceholder'], locale)}
+        InputProps={{ classes: { root: classes.input } }}
       />
     </>
   )

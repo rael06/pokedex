@@ -1,4 +1,5 @@
 import React from 'react'
+import { MenuItem, Select } from '@material-ui/core'
 import styles from './style.module.css'
 import LocaleContext from 'common/contexts/LocaleContext'
 import pokemons from 'common/models/pokemons.json'
@@ -18,13 +19,13 @@ export default function LanguageSelection() {
   return (
     <div className={styles.wrapper}>
       <label htmlFor="languages-select"></label>
-      <select onChange={handleChange} value={locale} name="languages" id="languages-select">
+      <Select onChange={handleChange} value={locale} name="languages" id="languages-select">
         {locales.map((locale) => (
-          <option key={locale} value={locale}>
+          <MenuItem key={locale} value={locale}>
             {locale}
-          </option>
+          </MenuItem>
         ))}
-      </select>
+      </Select>
     </div>
   )
 }

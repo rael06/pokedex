@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './style.module.css'
-import LocaleContext from 'common/contexts/LocaleContext'
 import pokemons from 'common/models/pokemons.json'
+import useLocale from 'common/hooks/useLocale'
 
 export default function LanguageSelection() {
-  const { locale, setLocale } = React.useContext(LocaleContext)
+  const { locale, setLocale } = useLocale()
 
   const locales = pokemons
     .map((pokemon) => Object.keys(pokemon.names))

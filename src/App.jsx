@@ -1,32 +1,27 @@
 import React from 'react'
 import styles from './style.module.css'
-import PokemonListPage from 'Page1/PokemonListPage'
+import PokemonListPage from 'PokemonListPage'
 import Header from 'common/components/Header'
 import LocaleContext from 'common/contexts/LocaleContext'
-import useLocaleStorage from 'common/hooks/useLocalStorage'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import PokemonDetails from './Page2/PokemonDetails/index'
-import PureLink from 'common/components/PureLink'
-import { getLocaleName, translations } from 'common/utils/locale'
+import useLocaleStorage from 'common/hooks/useLocalStorage'
+import NotFound from 'common/components/NotFound'
 
 export default function App() {
   const [locale, setLocale] = useLocaleStorage('locale', 'fr')
 
-  const localeContextValue = {
-    locale,
-    setLocale,
-  }
-
-  const changeLocale = (newLocale) => {
-    setLocale(newLocale)
-  }
-
   return (
     <BrowserRouter>
-      <LocaleContext.Provider value={localeContextValue}>
+      <LocaleContext.Provider
+        value={{
+          locale,
+          setLocale,
+        }}
+      >
         <div className={styles.wrapper}>
           <div className={styles.subWrapper}>
-            <Header changeLocale={changeLocale} />
+            <Header />
           </div>
 
           <div className={styles.subWrapper}>
@@ -40,19 +35,7 @@ export default function App() {
               <Route path={'/'} exact>
                 <Redirect to="/pokemons" />
               </Route>
-              <div
-                style={{
-                  fontWeight: 'bold',
-                  fontSize: '40px',
-                  color: 'white',
-                  marginLeft: '30px',
-                }}
-              >
-                404...
-                <PureLink to="/pokemons">
-                  <button>{getLocaleName(translations['goBack'], locale)}</button>
-                </PureLink>
-              </div>
+              <NotFound />
             </Switch>
           </div>
         </div>

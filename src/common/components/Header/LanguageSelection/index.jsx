@@ -3,13 +3,13 @@ import styles from './style.module.css'
 import pokemons from 'common/models/pokemons.json'
 import useLocale from 'common/hooks/useLocale'
 
+const locales = pokemons
+  .map((pokemon) => Object.keys(pokemon.names))
+  .flat()
+  .filter((value, index, self) => self.indexOf(value) === index)
+
 export default function LanguageSelection() {
   const { locale, setLocale } = useLocale()
-
-  const locales = pokemons
-    .map((pokemon) => Object.keys(pokemon.names))
-    .flat()
-    .filter((value, index, self) => self.indexOf(value) === index)
 
   const handleChange = (event) => {
     setLocale(event.target.value)

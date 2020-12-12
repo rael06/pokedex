@@ -4,7 +4,7 @@ import PokemonListPage from 'PokemonListPage'
 import Header from 'common/components/Header'
 import LocaleContext from 'common/contexts/LocaleContext'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
-import PokemonDetails from './Page2/PokemonDetails/index'
+import PokemonDetails from './PokemonListPage/PokemonDetails/index'
 import useLocaleStorage from 'common/hooks/useLocalStorage'
 import NotFound from 'common/components/NotFound'
 

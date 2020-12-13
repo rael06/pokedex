@@ -2,25 +2,28 @@ import React from 'react'
 import PureLink from 'common/components/PureLink'
 import useLocale from 'common/hooks/useLocale'
 import translations from 'translations.json'
-import { Button } from '@material-ui/core'
+import { Button, createMuiTheme, MuiThemeProvider } from '@material-ui/core'
+import styles from './style.module.css'
 
 const NotFound = () => {
   const { locale } = useLocale()
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#fff',
+      },
+    },
+  })
 
   return (
-    <div
-      style={{
-        fontWeight: 'bold',
-        fontSize: '40px',
-        color: 'white',
-        marginLeft: '30px',
-      }}
-    >
-      404...
+    <div className={styles.wrapper}>
+      <p className={styles.text}>404...</p>
       <PureLink to="/pokemons">
-        <Button autoFocus color="primary">
-          {translations['goBack'][locale]}
-        </Button>
+        <MuiThemeProvider theme={theme}>
+          <Button autoFocus variant="outlined" color="primary">
+            {translations['goBack'][locale]}
+          </Button>
+        </MuiThemeProvider>
       </PureLink>
     </div>
   )

@@ -14,6 +14,7 @@ const PokemonDetails = () => {
   const { id } = useParams()
   const history = useHistory()
   const pokemon = pokemonList.find((pokemon) => pokemon.id === Number(id))
+
   const [open, setOpen] = React.useState(!!id)
 
   const handleClose = () => {

@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './style.module.css'
 import pokemons from 'common/models/pokemons.json'
 import useLocale from 'common/hooks/useLocale'
+import { Select, MenuItem, InputLabel } from '@material-ui/core'
 
 const locales = pokemons
   .map((pokemon) => Object.keys(pokemon.names))
@@ -17,14 +18,20 @@ export default function LanguageSelection() {
 
   return (
     <div className={styles.wrapper}>
-      <label htmlFor="languages-select"></label>
-      <select onChange={handleChange} value={locale} name="languages" id="languages-select">
+      <InputLabel id="languages-selector-label"></InputLabel>
+      <Select
+        htmlFor="languages-selector-label"
+        onChange={handleChange}
+        value={locale}
+        name="languages"
+        id="languages-select"
+      >
         {locales.map((locale) => (
-          <option key={locale} value={locale}>
+          <MenuItem key={locale} value={locale}>
             {locale}
-          </option>
+          </MenuItem>
         ))}
-      </select>
+      </Select>
     </div>
   )
 }

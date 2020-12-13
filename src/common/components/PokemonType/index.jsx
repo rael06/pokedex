@@ -1,8 +1,9 @@
-import React from 'react'
-import styles from './style.module.css'
-import { darker } from 'common/utils/color'
-import translations from 'translations.json'
 import useLocale from 'common/hooks/useLocale'
+import { darker } from 'common/utils/color'
+import React from 'react'
+import translations from 'translations.json'
+import styles from './style.module.css'
+import { getLocaleName } from 'common/utils/locale'
 
 // const regex = /(?:"types": \["([a-z]+)"(?:, "([a-z]+)")*\],)/
 
@@ -32,7 +33,7 @@ export default function PokemonType({ type }) {
 
   return (
     <div className={styles.wrapper} style={{ backgroundColor: color, borderColor: darker(color) }}>
-      {translations.types[type][locale]}
+      {getLocaleName(translations.types[type], locale)}
     </div>
   )
 }

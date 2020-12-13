@@ -7,6 +7,7 @@ import translations from 'translations.json'
 import '@testing-library/jest-dom'
 import NotFound from './index'
 import LocaleContext from 'common/contexts/LocaleContext'
+import { getLocaleName } from 'common/utils/locale'
 
 describe('NotFound component', () => {
   it('Should display 404', () => {
@@ -22,7 +23,9 @@ describe('NotFound component', () => {
       </LocaleContext.Provider>
     )
     screen.getByText(/404/i)
-    const goBack = screen.getByRole('button', { name: new RegExp(translations['goBack'][locale]) })
+    const goBack = screen.getByRole('button', {
+      name: new RegExp(getLocaleName(translations['goBack'], locale)),
+    })
     userEvent.click(goBack)
     expect(history.location.pathname).toBe('/pokemons')
   })

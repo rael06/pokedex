@@ -1,6 +1,6 @@
 .wrapper *,
 .wrapper *::after,
 .wrapper *::before {
-  color: white;
-  border-color: white;
+  color: white !important;
+  border-color: white !important;
 }

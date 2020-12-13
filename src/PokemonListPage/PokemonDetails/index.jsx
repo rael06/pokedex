@@ -9,6 +9,7 @@ import useLocale from 'common/hooks/useLocale'
 import translations from 'translations.json'
 import { Dialog, DialogContent, DialogActions, Button } from '@material-ui/core'
 import { firstCharUppercase } from 'common/utils/strings'
+import { getLocaleName } from 'common/utils/locale'
 
 const PokemonDetails = () => {
   const { locale } = useLocale()
@@ -40,7 +41,7 @@ const PokemonDetails = () => {
       <DialogActions>
         <PureLink to="/pokemons">
           <Button autoFocus variant="contained" color="primary">
-            {translations['goBack'][locale]}
+            {getLocaleName(translations['goBack'], locale)}
           </Button>
         </PureLink>
       </DialogActions>

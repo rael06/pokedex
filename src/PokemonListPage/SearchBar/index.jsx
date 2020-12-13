@@ -3,6 +3,7 @@ import translations from 'translations.json'
 import React from 'react'
 import styles from './style.module.css'
 import { Input } from '@material-ui/core'
+import { getLocaleName } from 'common/utils/locale'
 
 export default function SearchBar({ handleChange, value }) {
   const { locale } = useLocale()
@@ -11,7 +12,7 @@ export default function SearchBar({ handleChange, value }) {
       <Input
         onChange={handleChange}
         value={value}
-        placeholder={translations['pokemonSearchBarPlaceholder'][locale]}
+        placeholder={getLocaleName(translations['pokemonSearchBarPlaceholder'], locale)}
       />
     </div>
   )

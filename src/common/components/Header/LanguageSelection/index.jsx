@@ -20,6 +20,7 @@ export default function LanguageSelection() {
     <div className={styles.wrapper}>
       <InputLabel id="languages-selector-label"></InputLabel>
       <Select
+        data-testid="language-selector-select"
         htmlFor="languages-selector-label"
         onChange={handleChange}
         value={locale}

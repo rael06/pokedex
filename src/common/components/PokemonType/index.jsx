@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './style.module.css'
 import { darker } from 'common/utils/color'
 import translations from 'translations.json'
-import { getLocaleName } from 'common/utils/locale'
 import useLocale from 'common/hooks/useLocale'
 
 // const regex = /(?:"types": \["([a-z]+)"(?:, "([a-z]+)")*\],)/
@@ -33,7 +32,7 @@ export default function PokemonType({ type }) {
 
   return (
     <div className={styles.wrapper} style={{ backgroundColor: color, borderColor: darker(color) }}>
-      {getLocaleName(translations.types[type], locale)}
+      {translations.types[type][locale]}
     </div>
   )
 }

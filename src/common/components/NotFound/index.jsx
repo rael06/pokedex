@@ -2,8 +2,7 @@ import React from 'react'
 import PureLink from 'common/components/PureLink'
 import useLocale from 'common/hooks/useLocale'
 import translations from 'translations.json'
-
-import { getLocaleName } from 'common/utils/locale'
+import { Button } from '@material-ui/core'
 
 const NotFound = () => {
   const { locale } = useLocale()
@@ -19,7 +18,9 @@ const NotFound = () => {
     >
       404...
       <PureLink to="/pokemons">
-        <button>{getLocaleName(translations['goBack'], locale)}</button>
+        <Button autoFocus color="primary">
+          {translations['goBack'][locale]}
+        </Button>
       </PureLink>
     </div>
   )

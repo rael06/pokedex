@@ -7,6 +7,7 @@ import useLocale from 'common/hooks/useLocale'
 
 export default function PokemonCard({ pokemon }) {
   const { locale } = useLocale()
+
   return (
     <div className={styles.wrapper}>
       <p className={styles.id}>No.{padder('0', 3, pokemon.id)}</p>

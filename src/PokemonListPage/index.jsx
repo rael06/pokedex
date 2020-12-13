@@ -18,7 +18,6 @@ export default function PokemonListPage() {
       </div>
 
       <Route path="/pokemons/:id" exact>
-        <div>test</div>
         <PokemonDetails />
       </Route>
       <PokemonList searched={searched} />

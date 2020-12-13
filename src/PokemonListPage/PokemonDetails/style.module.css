@@ -1,5 +1,15 @@
-.wrapper {
+.dialogContentWrapper {
+  width: 433px;
+}
+
+.moves {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  max-height: 550px;
+}
+
+.move {
+  text-align: center;
+  max-width: 33%;
 }

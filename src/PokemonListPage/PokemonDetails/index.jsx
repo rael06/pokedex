@@ -8,6 +8,7 @@ import PureLink from 'common/components/PureLink'
 import useLocale from 'common/hooks/useLocale'
 import translations from 'translations.json'
 import { Dialog, DialogContent, DialogActions, Button } from '@material-ui/core'
+import { firstCharUppercase } from 'common/utils/strings'
 
 const PokemonDetails = () => {
   const { locale } = useLocale()
@@ -23,20 +24,27 @@ const PokemonDetails = () => {
   }
 
   return (
-    <div className={styles.wrapper}>
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogContent dividers>
+    <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+      <DialogContent dividers>
+        <div className={styles.dialogContentWrapper}>
           <PokemonCard pokemon={pokemon} />
-        </DialogContent>
-        <DialogActions>
-          <PureLink to="/pokemons">
-            <Button autoFocus color="primary">
-              {translations['goBack'][locale]}
-            </Button>
-          </PureLink>
-        </DialogActions>
-      </Dialog>
-    </div>
+          <div className={styles.moves}>
+            {pokemon.moves.sort().map((m) => (
+              <div key={m} className={styles.move}>
+                {firstCharUppercase(m)}
+              </div>
+            ))}
+          </div>
+        </div>
+      </DialogContent>
+      <DialogActions>
+        <PureLink to="/pokemons">
+          <Button autoFocus variant="contained" color="primary">
+            {translations['goBack'][locale]}
+          </Button>
+        </PureLink>
+      </DialogActions>
+    </Dialog>
   )
 }
 

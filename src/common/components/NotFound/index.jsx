@@ -20,7 +20,7 @@ const NotFound = () => {
       <p className={styles.text}>404...</p>
       <PureLink to="/pokemons">
         <MuiThemeProvider theme={theme}>
-          <Button autoFocus variant="outlined" color="primary">
+          <Button autoFocus variant="contained" color="primary">
             {translations['goBack'][locale]}
           </Button>
         </MuiThemeProvider>

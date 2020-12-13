@@ -9,3 +9,9 @@
   width: 433px;
   cursor: pointer;
 }
+
+.noResultText {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}

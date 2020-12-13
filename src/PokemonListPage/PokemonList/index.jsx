@@ -24,7 +24,7 @@ export default function PokemonList({ searched }) {
           </div>
         ))
       ) : (
-        <p style={{ color: 'white', fontSize: '40px', fontWeight: 'bold' }}>Sorry, no result</p>
+        <p className={styles.noResultText}>Sorry, no result</p>
       )}
     </div>
   )

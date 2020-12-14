@@ -28,9 +28,9 @@ export default function LanguageSelection() {
         id="languages-select"
       >
         {locales.map((locale) => (
-          <MenuItem key={locale} value={locale}>
-            {locale}
-          </MenuItem>
+          <div key={locale} data-testid={`language-selector-option-${locale}`} value={locale}>
+            <MenuItem value={locale}>{locale}</MenuItem>
+          </div>
         ))}
       </Select>
     </div>

@@ -10,9 +10,13 @@ import translations from 'translations.json'
 
 describe('NotFound component', () => {
   it('Should change locale', () => {
-    const locale = 'fr'
+    let locale = 'fr'
+    const setLocale = (newLocale) => {
+      locale = newLocale
+    }
+
     render(
-      <LocaleContext.Provider value={{ locale }}>
+      <LocaleContext.Provider value={{ locale, setLocale }}>
         <LanguageSelection />
         <SearchBar />
       </LocaleContext.Provider>
@@ -20,9 +24,19 @@ describe('NotFound component', () => {
     screen.getByPlaceholderText(getLocaleName(translations['pokemonSearchBarPlaceholder'], 'fr'), {
       exact: false,
     })
-    const select = screen.getByTestId('language-selector-select')
-    userEvent.selectOptions(select, ['de'])
-    screen.getByPlaceholderText(getLocaleName(translations['pokemonSearchBarPlaceholder'], 'de'), {
+
+    const button = screen.getByRole('button', { name: 'fr' })
+    userEvent.click(button)
+    const option = screen.getByText('it')
+    userEvent.click(option)
+
+    render(
+      <LocaleContext.Provider value={{ locale }}>
+        <LanguageSelection />
+        <SearchBar />
+      </LocaleContext.Provider>
+    )
+    screen.getByPlaceholderText(getLocaleName(translations['pokemonSearchBarPlaceholder'], 'it'), {
       exact: false,
     })
   })

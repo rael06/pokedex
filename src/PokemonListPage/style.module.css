@@ -5,8 +5,13 @@
   padding: 10px;
 }
 
-.searchBar {
+.search {
   display: flex;
-  margin-bottom: 30px;
+  flex-direction: column;
   width: calc(100% - 14px);
+}
+
+.search > * {
+  width: 100%;
+  margin-bottom: 20px;
 }

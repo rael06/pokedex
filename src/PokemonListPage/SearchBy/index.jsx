@@ -2,16 +2,20 @@ import React from 'react'
 import styles from './style.module.css'
 import useLocale from 'common/hooks/useLocale'
 import { Select, MenuItem, InputLabel } from '@material-ui/core'
-import { firstCharUppercase } from 'common/utils/strings'
+import { getLocaleName } from 'common/utils/locale'
+import translations from 'translations.json'
 
-const options = ['name', 'move']
+const options = Object.keys(translations['searchBy'])
 
 export default function SearchBy({ searchBy, onSelect }) {
+  const { locale } = useLocale()
   const handleChange = (event) => onSelect(event.target.value)
 
   return (
     <div className={styles.wrapper}>
-      <InputLabel id="searchBy-selector-label"></InputLabel>
+      <InputLabel id="searchBy-selector-label">
+        {getLocaleName(translations['searchByLabel'], locale)}
+      </InputLabel>
       <Select
         htmlFor="searchBy-selector-label"
         onChange={handleChange}
@@ -21,7 +25,7 @@ export default function SearchBy({ searchBy, onSelect }) {
       >
         {options.map((option) => (
           <MenuItem key={option} value={option}>
-            {firstCharUppercase(option)}
+            {getLocaleName(translations['searchBy'][option], locale)}
           </MenuItem>
         ))}
       </Select>

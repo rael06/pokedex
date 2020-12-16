@@ -4,3 +4,12 @@
   color: white !important;
   border-color: white !important;
 }
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper label {
+  margin-right: 10px;
+}

@@ -13,7 +13,7 @@ export default function PokemonListPage() {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.searchBar}>
+      <div className={styles.search}>
         <SearchBy searchBy={searchBy} onSelect={setSearchBy} />
         <SearchBar searched={searched} setSearched={setSearched} />
       </div>

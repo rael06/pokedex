@@ -13,6 +13,36 @@
     "de": "Geben Sie den Namen eines Pokemons ein",
     "es": "Ingrese el nombre de un Pokemon"
   },
+  "searchByLabel": {
+    "en": "Search by",
+    "fr": "Recherchez par",
+    "it": "Cerca per",
+    "de": "Suche nach",
+    "es": "Búsqueda por"
+  },
+  "searchBy": {
+    "name": {
+      "en": "Name",
+      "fr": "Nom",
+      "it": "Nome",
+      "de": "Name",
+      "es": "Nombre"
+    },
+    "move": {
+      "en": "Move",
+      "fr": "Abilité",
+      "it": "Capacità",
+      "de": "Kapazität",
+      "es": "Capacidad"
+    },
+    "type": {
+      "en": "Type",
+      "fr": "Type",
+      "it": "Tipo",
+      "de": "Art",
+      "es": "Tipo"
+    }
+  },
   "types": {
     "normal": {
       "ja": "ノーマル",

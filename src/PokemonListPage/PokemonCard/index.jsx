@@ -11,9 +11,13 @@ export default function PokemonCard({ pokemon }) {
   const [image, setImage] = React.useState()
 
   React.useEffect(() => {
+    let isMounted = true
     setTimeout(() => {
-      setImage(pokemon.image)
+      if (isMounted) setImage(pokemon.image)
     }, 1000)
+    return () => {
+      isMounted = false
+    }
   })
 
   return (

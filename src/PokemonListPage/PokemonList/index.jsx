@@ -17,6 +17,7 @@ export default function PokemonList({ searchBy, searched }) {
   }, [searched])
 
   React.useEffect(() => {
+    let isMounted = true
     const isMoveContained = (move) => !!move.match(new RegExp(searched))
 
     const filterByMove = () =>
@@ -29,19 +30,30 @@ export default function PokemonList({ searchBy, searched }) {
         )
       )
 
-    setTimeout(() => {
-      switch (searchBy) {
-        case 'name':
-          filterByName()
-          break
-        case 'move':
-          filterByMove()
-          break
-        default:
-          break
-      }
-      setIsLoaded(true)
-    }, 500)
+    const delay = (callBack) => {
+      setIsLoaded(false)
+      setTimeout(() => {
+        if (isMounted) {
+          callBack()
+          setIsLoaded(true)
+        }
+      }, 500)
+    }
+
+    switch (searchBy) {
+      case 'name':
+        delay(filterByName)
+        break
+      case 'move':
+        delay(filterByMove)
+        break
+      default:
+        break
+    }
+
+    return () => {
+      isMounted = false
+    }
   }, [locale, searchBy, searched])
 
   return (

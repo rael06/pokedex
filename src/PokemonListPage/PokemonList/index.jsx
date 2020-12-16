@@ -7,7 +7,7 @@ import PureLink from 'common/components/PureLink'
 import { getLocaleName } from 'common/utils/locale'
 import { CircularProgress } from '@material-ui/core'
 
-export default function PokemonList({ searched }) {
+export default function PokemonList({ searchBy, searched }) {
   const { locale } = useLocale()
   const [list, setList] = React.useState([])
   const [isLoaded, setIsLoaded] = React.useState(false)
@@ -17,15 +17,32 @@ export default function PokemonList({ searched }) {
   }, [searched])
 
   React.useEffect(() => {
-    setTimeout(() => {
+    const isMoveContained = (move) => !!move.match(new RegExp(searched))
+
+    const filterByMove = () =>
+      setList(pokemonList.filter((pokemon) => pokemon.moves.filter(isMoveContained).length > 0))
+
+    const filterByName = () =>
       setList(
         pokemonList.filter((pokemon) =>
           getLocaleName(pokemon.names, locale).toLowerCase().includes(searched.toLowerCase())
         )
       )
+
+    setTimeout(() => {
+      switch (searchBy) {
+        case 'name':
+          filterByName()
+          break
+        case 'move':
+          filterByMove()
+          break
+        default:
+          break
+      }
       setIsLoaded(true)
     }, 500)
-  }, [list, locale, searched])
+  }, [locale, searchBy, searched])
 
   return (
     <div className={styles.wrapper}>

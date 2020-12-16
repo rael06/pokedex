@@ -5,13 +5,16 @@ import styles from './style.module.css'
 import { Input } from '@material-ui/core'
 import { getLocaleName } from 'common/utils/locale'
 
-export default function SearchBar({ handleChange, value }) {
+export default function SearchBar({ searched, setSearched }) {
   const { locale } = useLocale()
+
+  const handleChange = (event) => setSearched(event.target.value)
+
   return (
     <div className={styles.input}>
       <Input
         onChange={handleChange}
-        value={value}
+        value={searched}
         placeholder={getLocaleName(translations['pokemonSearchBarPlaceholder'], locale)}
       />
     </div>

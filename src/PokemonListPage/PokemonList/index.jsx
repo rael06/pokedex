@@ -18,7 +18,7 @@ export default function PokemonList({ searchBy, searched }) {
 
   React.useEffect(() => {
     let isMounted = true
-    const isMoveContained = (move) => !!move.match(new RegExp(searched))
+    const isMoveContained = (move) => !!move.match(new RegExp(searched, 'i'))
 
     const filterByMove = () =>
       setList(pokemonList.filter((pokemon) => pokemon.moves.filter(isMoveContained).length > 0))

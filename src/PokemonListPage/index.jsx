@@ -11,6 +11,10 @@ import PokemonTypeCheckboxxes from 'PokemonListPage/PokemonTypeCheckboxxes'
 export default function PokemonListPage() {
   const [searched, setSearched] = useLocalStorage('searchedPokemon', '')
   const [searchBy, setSearchBy] = useLocalStorage('searchBy', 'name')
+  const [checkedTypes, setCheckedTypes] = React.useState([])
+
+  const addType = (value) => setCheckedTypes([...checkedTypes, value])
+  const removeType = (value) => setCheckedTypes(checkedTypes.filter((type) => type !== value))
 
   return (
     <div className={styles.wrapper}>
@@ -19,12 +23,12 @@ export default function PokemonListPage() {
         <SearchBar searched={searched} setSearched={setSearched} />
       </div>
 
-      <PokemonTypeCheckboxxes />
+      <PokemonTypeCheckboxxes addType={addType} removeType={removeType} />
 
       <Route path="/pokemons/:id" exact>
         <PokemonDetails />
       </Route>
-      <PokemonList searched={searched} searchBy={searchBy} />
+      <PokemonList searched={searched} searchBy={searchBy} checkedTypes={checkedTypes} />
     </div>
   )
 }

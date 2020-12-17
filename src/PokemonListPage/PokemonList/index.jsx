@@ -6,8 +6,9 @@ import useLocale from 'common/hooks/useLocale'
 import PureLink from 'common/components/PureLink'
 import { getLocaleName } from 'common/utils/locale'
 import { CircularProgress } from '@material-ui/core'
+import translations from 'translations.json'
 
-export default function PokemonList({ searchBy, searched }) {
+export default function PokemonList({ searchBy, searched, checkedTypes }) {
   const { locale } = useLocale()
   const [list, setList] = React.useState([])
   const [isLoaded, setIsLoaded] = React.useState(false)
@@ -19,13 +20,27 @@ export default function PokemonList({ searchBy, searched }) {
   React.useEffect(() => {
     let isMounted = true
     const isMoveContained = (move) => !!move.match(new RegExp(searched, 'i'))
+    const isTypeContained = (type) =>
+      !!getLocaleName(translations.types[type], locale).match(new RegExp(searched, 'i'))
+
+    const isTypeContainedInCheckedTypes = (type) => checkedTypes.includes(type)
+
+    const filterByCheckedTypes = () =>
+      pokemonList.filter(
+        (pokemon) => pokemon.types.filter(isTypeContainedInCheckedTypes).length > 0
+      )
+
+    const currentList = checkedTypes.length > 0 ? filterByCheckedTypes() : pokemonList
 
     const filterByMove = () =>
-      setList(pokemonList.filter((pokemon) => pokemon.moves.filter(isMoveContained).length > 0))
+      setList(currentList.filter((pokemon) => pokemon.moves.filter(isMoveContained).length > 0))
+
+    const filterByType = () =>
+      setList(currentList.filter((pokemon) => pokemon.types.filter(isTypeContained).length > 0))
 
     const filterByName = () =>
       setList(
-        pokemonList.filter((pokemon) =>
+        currentList.filter((pokemon) =>
           getLocaleName(pokemon.names, locale).toLowerCase().includes(searched.toLowerCase())
         )
       )
@@ -47,6 +62,9 @@ export default function PokemonList({ searchBy, searched }) {
       case 'move':
         delay(filterByMove)
         break
+      case 'type':
+        delay(filterByType)
+        break
       default:
         break
     }
@@ -54,7 +72,7 @@ export default function PokemonList({ searchBy, searched }) {
     return () => {
       isMounted = false
     }
-  }, [locale, searchBy, searched])
+  }, [checkedTypes, locale, searchBy, searched])
 
   return (
     <div className={styles.wrapper}>

@@ -6,6 +6,7 @@ import useLocalStorage from 'common/hooks/useLocalStorage'
 import { Route } from 'react-router-dom'
 import PokemonDetails from 'PokemonListPage/PokemonDetails'
 import SearchBy from 'PokemonListPage/SearchBy'
+import PokemonTypeCheckboxxes from 'PokemonListPage/PokemonTypeCheckboxxes'
 
 export default function PokemonListPage() {
   const [searched, setSearched] = useLocalStorage('searchedPokemon', '')
@@ -17,6 +18,8 @@ export default function PokemonListPage() {
         <SearchBy searchBy={searchBy} onSelect={setSearchBy} />
         <SearchBar searched={searched} setSearched={setSearched} />
       </div>
+
+      <PokemonTypeCheckboxxes />
 
       <Route path="/pokemons/:id" exact>
         <PokemonDetails />

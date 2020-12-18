@@ -5,10 +5,17 @@ import styles from './style.module.css'
 import { getLocaleName } from 'common/utils/locale'
 import useLocale from 'common/hooks/useLocale'
 import pokeball from './pokeball.png'
+import FavouriteStar from 'common/components/FavouriteStar'
 
-export default function PokemonCard({ pokemon }) {
+export default function PokemonCard({ pokemon, toggleFavourite, isFavourite }) {
   const { locale } = useLocale()
   const [image, setImage] = React.useState()
+
+  const handleFavouriteClick = (event) => {
+    event.stopPropagation()
+    event.preventDefault()
+    toggleFavourite(pokemon.id)
+  }
 
   React.useEffect(() => {
     let isMounted = true
@@ -22,7 +29,10 @@ export default function PokemonCard({ pokemon }) {
 
   return (
     <div className={styles.wrapper}>
-      <p className={styles.id}>No.{padder('0', 3, pokemon.id)}</p>
+      <div className={styles.header}>
+        <p className={styles.id}>No.{padder('0', 3, pokemon.id)}</p>
+        <FavouriteStar isFavourite={isFavourite} onClick={handleFavouriteClick}></FavouriteStar>
+      </div>
       <p className={styles.name}>{getLocaleName(pokemon.names, locale)}</p>
       <img className={styles.image} alt="pic" src={image ? image : pokeball} />
       <div className={styles.types}>

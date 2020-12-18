@@ -1,14 +1,20 @@
 import React from 'react'
 import styles from './style.module.css'
 import PokemonCard from 'PokemonListPage/PokemonCard'
-import pokemonList from 'common/models/pokemons.json'
 import useLocale from 'common/hooks/useLocale'
 import PureLink from 'common/components/PureLink'
 import { getLocaleName } from 'common/utils/locale'
 import { CircularProgress } from '@material-ui/core'
 import translations from 'translations.json'
 
-export default function PokemonList({ searchBy, searched, checkedTypes }) {
+export default function PokemonList({
+  pokemonList,
+  favourites,
+  toggleFavourite,
+  searchBy,
+  searched,
+  checkedTypes,
+}) {
   const { locale } = useLocale()
   const [list, setList] = React.useState([])
   const [isLoaded, setIsLoaded] = React.useState(false)
@@ -83,7 +89,7 @@ export default function PokemonList({ searchBy, searched, checkedTypes }) {
     return () => {
       isMounted = false
     }
-  }, [checkedTypes, locale, searchBy, searched])
+  }, [checkedTypes, locale, pokemonList, searchBy, searched])
 
   return (
     <div className={styles.wrapper}>
@@ -92,7 +98,11 @@ export default function PokemonList({ searchBy, searched, checkedTypes }) {
           list.map((pokemon) => (
             <div key={pokemon.id} className={styles.cardWrapper}>
               <PureLink to={`/pokemons/${pokemon.id}`}>
-                <PokemonCard pokemon={pokemon} />
+                <PokemonCard
+                  toggleFavourite={toggleFavourite}
+                  isFavourite={favourites.includes(pokemon.id)}
+                  pokemon={pokemon}
+                />
               </PureLink>
             </div>
           ))

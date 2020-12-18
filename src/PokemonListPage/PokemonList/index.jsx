@@ -27,7 +27,8 @@ export default function PokemonList({ searchBy, searched, checkedTypes }) {
 
     const filterByCheckedTypes = () =>
       pokemonList.filter(
-        (pokemon) => pokemon.types.filter(isTypeContainedInCheckedTypes).length > 0
+        (pokemon) =>
+          pokemon.types.filter(isTypeContainedInCheckedTypes).length === checkedTypes.length
       )
 
     const currentList = checkedTypes.length > 0 ? filterByCheckedTypes() : pokemonList

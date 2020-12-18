@@ -14,15 +14,15 @@ const PokemonTypeCheckbox = ({ type, onCheck, onUncheck }) => {
 
   return (
     <div className={styles.wrapper} onClick={handleClick} ref={pokemonTypeCheckbox} value={type}>
-      <label id={`checkbox_${type}`}>
-        <PokemonType type={type} />
-      </label>
       <input
         onChange={(event) => event.stopPropagation()}
         htmlFor={`checkbox_${type}`}
         type="checkbox"
         checked={checked}
       />
+      <label id={`checkbox_${type}`}>
+        <PokemonType type={type} />
+      </label>
     </div>
   )
 }

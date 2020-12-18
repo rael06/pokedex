@@ -19,25 +19,35 @@ export default function PokemonList({ searchBy, searched, checkedTypes }) {
 
   React.useEffect(() => {
     let isMounted = true
-    const isMoveContained = (move) => !!move.match(new RegExp(searched, 'i'))
-    const isTypeContained = (type) =>
+    const isMoveSearched = (move) =>
+      searched
+        .trim()
+        .split(' ')
+        .filter((word) => !!move.match(new RegExp(word, 'i'))).length > 0
+
+    const isTypeSearched = (type) =>
       !!getLocaleName(translations.types[type], locale).match(new RegExp(searched, 'i'))
 
-    const isTypeContainedInCheckedTypes = (type) => checkedTypes.includes(type)
+    const isTypeSearchedInCheckedTypes = (type) => checkedTypes.includes(type)
 
     const filterByCheckedTypes = () =>
       pokemonList.filter(
         (pokemon) =>
-          pokemon.types.filter(isTypeContainedInCheckedTypes).length === checkedTypes.length
+          pokemon.types.filter(isTypeSearchedInCheckedTypes).length === checkedTypes.length
       )
 
     const currentList = checkedTypes.length > 0 ? filterByCheckedTypes() : pokemonList
 
     const filterByMove = () =>
-      setList(currentList.filter((pokemon) => pokemon.moves.filter(isMoveContained).length > 0))
+      setList(
+        currentList.filter(
+          (pokemon) =>
+            pokemon.moves.filter(isMoveSearched).length >= searched.trim().split(' ').length
+        )
+      )
 
     const filterByType = () =>
-      setList(currentList.filter((pokemon) => pokemon.types.filter(isTypeContained).length > 0))
+      setList(currentList.filter((pokemon) => pokemon.types.filter(isTypeSearched).length > 0))
 
     const filterByName = () =>
       setList(

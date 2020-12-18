@@ -31,7 +31,9 @@ export default function PokemonCard({ pokemon, toggleFavourite, isFavourite }) {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <p className={styles.id}>No.{padder('0', 3, pokemon.id)}</p>
-        <FavouriteStar isFavourite={isFavourite} onClick={handleFavouriteClick}></FavouriteStar>
+        {toggleFavourite && (
+          <FavouriteStar isFavourite={isFavourite} onClick={handleFavouriteClick}></FavouriteStar>
+        )}
       </div>
       <p className={styles.name}>{getLocaleName(pokemon.names, locale)}</p>
       <img className={styles.image} alt="pic" src={image ? image : pokeball} />

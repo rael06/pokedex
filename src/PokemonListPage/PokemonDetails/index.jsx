@@ -4,7 +4,6 @@ import PokemonCard from 'PokemonListPage/PokemonCard'
 import pokemonList from 'common/models/pokemons.json'
 import { useParams } from 'react-router'
 import { useHistory } from 'react-router-dom'
-import PureLink from 'common/components/PureLink'
 import useLocale from 'common/hooks/useLocale'
 import translations from 'translations.json'
 import { Dialog, DialogContent, DialogActions, Button } from '@material-ui/core'
@@ -46,11 +45,9 @@ const PokemonDetails = ({ favourites, toggleFavourite }) => {
           </div>
         </DialogContent>
         <DialogActions>
-          <PureLink to="/pokemons">
-            <Button autoFocus variant="contained" color="primary">
-              {getLocaleName(translations['goBack'], locale)}
-            </Button>
-          </PureLink>
+          <Button onClick={handleClose} autoFocus variant="contained" color="primary">
+            {getLocaleName(translations['goBack'], locale)}
+          </Button>
         </DialogActions>
       </Dialog>
     )

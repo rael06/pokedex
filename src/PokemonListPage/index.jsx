@@ -8,6 +8,7 @@ import { Route } from 'react-router-dom'
 import PokemonDetails from 'PokemonListPage/PokemonDetails'
 import SearchBy from 'PokemonListPage/SearchBy'
 import PokemonTypeCheckboxxes from 'PokemonListPage/PokemonTypeCheckboxxes'
+import PokemonFavourites from './PokemonFavourites/index'
 
 export default function PokemonListPage() {
   const [searched, setSearched] = useLocalStorage('searchedPokemon', '')
@@ -16,7 +17,7 @@ export default function PokemonListPage() {
 
   const addType = (value) => setCheckedTypes([...checkedTypes, value])
   const removeType = (value) => setCheckedTypes(checkedTypes.filter((type) => type !== value))
-  const [favourites, setFavourites] = React.useState([])
+  const [favourites, setFavourites] = useLocalStorage('favourites', [])
 
   const addFavourite = (pokemonId) => setFavourites([...favourites, pokemonId])
   const removeFavourite = (pokemonId) => setFavourites(favourites.filter((id) => id !== pokemonId))
@@ -31,8 +32,21 @@ export default function PokemonListPage() {
       </Route>
 
       <Route path="/pokemons/favourites" exact>
-        <PokemonList
+        <PokemonFavourites
           pokemonList={pokemonList.filter((pokemon) => favourites.includes(pokemon.id))}
+        />
+      </Route>
+
+      <Route path="/pokemons" exact>
+        <div className={styles.search}>
+          <SearchBy searchBy={searchBy} onSelect={setSearchBy} />
+          <SearchBar searched={searched} setSearched={setSearched} />
+        </div>
+
+        <PokemonTypeCheckboxxes addType={addType} removeType={removeType} />
+
+        <PokemonList
+          pokemonList={pokemonList}
           toggleFavourite={toggleFavourite}
           favourites={favourites}
           searched={searched}
@@ -40,22 +54,6 @@ export default function PokemonListPage() {
           checkedTypes={checkedTypes}
         />
       </Route>
-
-      <div className={styles.search}>
-        <SearchBy searchBy={searchBy} onSelect={setSearchBy} />
-        <SearchBar searched={searched} setSearched={setSearched} />
-      </div>
-
-      <PokemonTypeCheckboxxes addType={addType} removeType={removeType} />
-
-      <PokemonList
-        pokemonList={pokemonList}
-        toggleFavourite={toggleFavourite}
-        favourites={favourites}
-        searched={searched}
-        searchBy={searchBy}
-        checkedTypes={checkedTypes}
-      />
     </div>
   )
 }

@@ -69,7 +69,7 @@ export default function PokemonList({
           callBack()
           setIsLoaded(true)
         }
-      }, 500)
+      }, 50)
     }
 
     switch (searchBy) {

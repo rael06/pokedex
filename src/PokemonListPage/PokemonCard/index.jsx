@@ -21,7 +21,7 @@ export default function PokemonCard({ pokemon, toggleFavourite, isFavourite }) {
     let isMounted = true
     setTimeout(() => {
       if (isMounted) setImage(pokemon.image)
-    }, 500)
+    }, 100)
     return () => {
       isMounted = false
     }

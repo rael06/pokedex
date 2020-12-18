@@ -9,6 +9,6 @@ describe('PokemonList component', () => {
 
   it('Should display only checked types pokemons', async () => {
     render(<PokemonList pokemonList={pokemonList} checkedTypes={mockChecked} />)
-    // Je n'ai pas réussi à tester le composant à cause du délai de la progress bar
+    // Je n'ai pas réussi à tester le composant à cause du délai de la progress bar, je n'ai plus de temps
   })
 })

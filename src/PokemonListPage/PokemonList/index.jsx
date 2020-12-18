@@ -8,6 +8,7 @@ import { CircularProgress } from '@material-ui/core'
 import translations from 'translations.json'
 
 export default function PokemonList({
+  noDelay,
   pokemonList,
   favourites,
   toggleFavourite,
@@ -17,7 +18,7 @@ export default function PokemonList({
 }) {
   const { locale } = useLocale()
   const [list, setList] = React.useState([])
-  const [isLoaded, setIsLoaded] = React.useState(false)
+  const [isLoaded, setIsLoaded] = React.useState(!!noDelay)
 
   React.useEffect(() => {
     setIsLoaded(false)
@@ -67,29 +68,33 @@ export default function PokemonList({
       setTimeout(() => {
         if (isMounted) {
           callBack()
-          setIsLoaded(true)
         }
       }, 50)
     }
 
-    switch (searchBy) {
-      case 'name':
-        delay(filterByName)
-        break
-      case 'move':
-        delay(filterByMove)
-        break
-      case 'type':
-        delay(filterByType)
-        break
-      default:
-        break
+    const switcher = () => {
+      switch (searchBy) {
+        case 'name':
+          filterByName()
+          break
+        case 'move':
+          filterByMove()
+          break
+        case 'type':
+          filterByType()
+          break
+        default:
+          break
+      }
+      setIsLoaded(true)
     }
+
+    !!noDelay ? switcher() : delay(switcher)
 
     return () => {
       isMounted = false
     }
-  }, [checkedTypes, locale, pokemonList, searchBy, searched])
+  }, [checkedTypes, locale, noDelay, pokemonList, searchBy, searched])
 
   return (
     <div className={styles.wrapper}>

@@ -110,7 +110,9 @@ export default function PokemonList({
           <p className={styles.noResultText}>Sorry, no result</p>
         )
       ) : (
-        <CircularProgress color="secondary" />
+        <div data-testid="loading-testid">
+          <CircularProgress color="secondary" />
+        </div>
       )}
     </div>
   )
